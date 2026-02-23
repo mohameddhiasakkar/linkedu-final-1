@@ -6,8 +6,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-student',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './student.html',
-  styleUrl: './student.css'
+  templateUrl: './student.component.html',
 })
 export class StudentComponent {
   student = {

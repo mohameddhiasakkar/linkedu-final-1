@@ -6,14 +6,13 @@ import { RouterModule } from '@angular/router';
   selector: 'app-admin',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './admin.html',
-  styleUrl: './admin.css'
+  templateUrl: './admin.component.html',
+  styleUrl: './admin.component.css'
 })
 export class AdminComponent {
   sidebarCollapsed = false;
   currentSection = 'statistics';
 
-  // Stats for dashboard
   stats = {
     employers: 156,
     students: 2847,
@@ -21,7 +20,6 @@ export class AdminComponent {
     revenue: 456800
   };
 
-  // Students data
   students = [
     { id: 1, name: 'Ahmed Ben Ali', email: 'ahmed@email.com', university: 'ENSI', status: 'active', applications: 5 },
     { id: 2, name: 'Marie Dupont', email: 'marie@email.com', university: 'MIT', status: 'active', applications: 3 },
@@ -30,7 +28,6 @@ export class AdminComponent {
     { id: 5, name: 'Ali Ben Ammar', email: 'ali@email.com', university: 'INSAT', status: 'inactive', applications: 0 }
   ];
 
-  // Employers data
   employers = [
     { id: 1, name: 'TechCorp Tunisia', industry: 'Technology', jobs: 12, status: 'active', joined: '2024-01-15' },
     { id: 2, name: 'Global Services', industry: 'Consulting', jobs: 8, status: 'active', joined: '2024-02-20' },
@@ -39,7 +36,6 @@ export class AdminComponent {
     { id: 5, name: 'HealthCare TN', industry: 'Healthcare', jobs: 6, status: 'active', joined: '2024-01-28' }
   ];
 
-  // Finance data
   financeData = [
     { month: 'Jan', income: 45000, expenses: 28000 },
     { month: 'Feb', income: 52000, expenses: 31000 },

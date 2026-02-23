@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-destinations',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './destinations.html',
-  styleUrl: './app.css'
+  templateUrl: './destinations.component.html',
+  styleUrl: './destinations.component.css'
 })
 export class DestinationsComponent {}
