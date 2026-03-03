@@ -1,270 +1,194 @@
     <main class="pt-20">
     <!-- Hero Section -->
-    <section class="relative bg-gray-900 text-white py-32 overflow-hidden">
+    <section class="relative bg-gray-900 py-32 overflow-hidden text-white">
         <!-- Animated background elements -->
         <div class="absolute inset-0 bg-gradient-to-br from-blue-950 via-blue-900 to-gray-900"></div>
-        <div class="absolute top-0 left-0 w-full h-full opacity-30">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-            <div class="absolute top-20 right-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-            <div class="absolute -bottom-8 left-1/2 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div class="top-0 left-0 absolute opacity-30 w-full h-full">
+            <div class="top-20 left-10 absolute bg-blue-500 blur-3xl rounded-full w-72 h-72 mix-blend-multiply filter"></div>
+            <div class="top-20 right-10 absolute bg-cyan-500 blur-3xl rounded-full w-72 h-72 mix-blend-multiply filter"></div>
+            <div class="-bottom-8 left-1/2 absolute bg-indigo-500 blur-3xl rounded-full w-72 h-72 mix-blend-multiply filter"></div>
         </div>
         
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2 text-center lg:text-left order-2 lg:order-1">
-                    <span class="inline-block py-2 px-4 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-sm font-medium mb-6 backdrop-blur-sm hover:bg-blue-500/30 transition-colors cursor-default">
+        <div class="z-10 relative mx-auto px-6 container">
+            <div class="flex lg:flex-row flex-col items-center gap-12">
+                <div class="order-2 lg:order-1 lg:w-1/2 lg:text-left text-center">
+                    <span class="inline-block bg-blue-500/20 hover:bg-blue-500/30 backdrop-blur-sm mb-6 px-4 py-2 border border-blue-400/30 rounded-full font-medium text-blue-300 text-sm transition-colors cursor-default">
                         🌍 Explorez le Monde
                     </span>
-                    <p class="text-blue-200 font-semibold tracking-widest mb-4 uppercase text-lg">DESTINATIONS INTERNATIONALES</p>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    <p class="mb-4 font-semibold text-blue-200 text-lg uppercase tracking-widest">DESTINATIONS INTERNATIONALES</p>
+                    <h1 class="mb-6 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">
                         NOS <span class="text-yellow-400">DESTINATIONS</span> POUR VOS ÉTUDES
                     </h1>
-                    <p class="text-xl text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    <p class="mx-auto lg:mx-0 mb-8 max-w-xl text-gray-300 text-xl leading-relaxed">
                         Découvrez les pays où nos étudiants étudient et réalisez votre rêve d'études à l'international.
                     </p>
                 </div>
-                <div class="lg:w-1/2 order-1 lg:order-2">
-                    <div class="relative w-100 h-100 lg:w-100 lg:h-100 mx-auto">
-                        <div class="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-xl"></div>
-                        <img src="/pics/3.jpg" alt="LinkedU - Destinations" class="relative w-full h-full rounded-full shadow-2xl object-cover hover:shadow-blue-500/25 transition-shadow duration-300 transform hover:scale-[1.02]">
+                <div class="order-1 lg:order-2 lg:w-1/2">
+                    <div class="relative mx-auto w-100 lg:w-100 h-100 lg:h-100">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-xl rounded-full"></div>
+                        <img src="/pics/3.jpg" alt="LinkedU - Destinations" class="relative shadow-2xl hover:shadow-blue-500/25 rounded-full w-full h-full object-cover hover:scale-[1.02] transition-shadow duration-300 transform">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <section class="py-12 bg-white border-b border-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">25+</div>
-                    <div class="text-gray-500 text-sm font-medium">Pays partenaires</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">50+</div>
-                    <div class="text-gray-500 text-sm font-medium">Universités partenaires</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">15ans</div>
-                    <div class="text-gray-500 text-sm font-medium">D'expérience</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">2000+</div>
-                    <div class="text-gray-500 text-sm font-medium">Étudiants accompagnés</div>
+  <!-- Destinations Grid -->
+<section class="relative py-24 overflow-hidden">
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+        <source src="/pics/1.mp4" type="video/mp4">
+    </video>
+
+    <div class="z-10 relative mx-auto px-6 container">
+        <div class="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+            <!-- France -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c1.jpg" alt="France" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">FRANCE</h3>
+                    <p class="text-white text-lg text-center">Études en France</p>
+                    <a routerLink="/destinations/pays/france" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Destinations Grid -->
-    <section class="py-24 relative overflow-hidden">
-        <!-- Video Background -->
-        <video 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            class="absolute inset-0 w-full h-full object-cover"
-        >
-            <source src="/pics/1.mp4" type="video/mp4">
-        </video>
-        <div class="container mx-auto px-6 relative z-10">
-            <!-- Section Header with White Background -->
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- France -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-                        <span class="text-6xl">🇫🇷</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">FRANCE</h3>
-                        <p class="text-gray-500 mb-4">Études en France</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Romanie -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-yellow-500 to-yellow-700 flex items-center justify-center">
-                        <span class="text-6xl">🇷🇴</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">ROMANIE</h3>
-                        <p class="text-gray-500 mb-4">Études en Romanie</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Dubai -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-cyan-600 to-cyan-800 flex items-center justify-center">
-                        <span class="text-6xl">🇦🇪</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Dubaï</h3>
-                        <p class="text-gray-500 mb-4">Études à Dubaï</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Italie -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center">
-                        <span class="text-6xl">🇮🇹</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">ITALIE</h3>
-                        <p class="text-gray-500 mb-4">Études en Italie</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Türkiye -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-                        <span class="text-6xl">🇹🇷</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">TÜRKIYE</h3>
-                        <p class="text-gray-500 mb-4">Études en Türkiye</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Espagne -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center">
-                        <span class="text-6xl">🇪🇸</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">ESPAGNE</h3>
-                        <p class="text-gray-500 mb-4">Études en Espagne</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Belgique -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-black flex items-center justify-center">
-                        <span class="text-6xl">🇧🇪</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">BELGIQUE</h3>
-                        <p class="text-gray-500 mb-4">Études en Belgique</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Allemagne -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-yellow-500 to-black flex items-center justify-center">
-                        <span class="text-6xl">🇩🇪</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">ALLEMAGNE</h3>
-                        <p class="text-gray-500 mb-4">Études en Allemagne</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Chine -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-red-500 to-yellow-500 flex items-center justify-center">
-                        <span class="text-6xl">🇨🇳</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">CHINE</h3>
-                        <p class="text-gray-500 mb-4">Études en Chine</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Suisse -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-red-500 to-white flex items-center justify-center">
-                        <span class="text-6xl">🇨🇭</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">SUISSE</h3>
-                        <p class="text-gray-500 mb-4">Études en Suisse</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Géorgie -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-red-500 to-white flex items-center justify-center">
-                        <span class="text-6xl">🇬🇪</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">GÉORGIE</h3>
-                        <p class="text-gray-500 mb-4">Études en Géorgie</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Malte -->
-                <div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="h-48 bg-gradient-to-br from-red-500 to-white flex items-center justify-center">
-                        <span class="text-6xl">🇲🇹</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">MALTE</h3>
-                        <p class="text-gray-500 mb-4">Études à Malte</p>
-                        <a href="#" class="inline-flex items-center justify-center w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-all">
-                            DÉCOUVRIR
-                        </a>
-                    </div>
+            <!-- Romania -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c2.jpg" alt="Romania" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">ROUMANIE</h3>
+                    <p class="text-white text-lg text-center">Études en Roumanie</p>
+                    <a routerLink="/destinations/pays/romanie" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-700 text-white relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-        </div>
-        
-        <div class="container mx-auto px-6 relative z-10 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-6">
-                Faire de votre projet d'études à l'étranger une réalité tangible
-            </h2>
-            <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-                Grâce à un accompagnement stratégique sur mesure.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#" class="inline-flex items-center justify-center bg-white text-blue-900 px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1 group">
-                    <span>RÉSERVATION</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                </a>
+            <!-- Dubai -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c3.jpg" alt="Dubai" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">DUBAÏ</h3>
+                    <p class="text-white text-lg text-center">Études à Dubaï</p>
+                    <a routerLink="/destinations/pays/dubai" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
+                </div>
             </div>
+
+            <!-- Italie -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c4.jpg" alt="Italie" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">ITALIE</h3>
+                    <p class="text-white text-lg text-center">Études en Italie</p>
+                    <a routerLink="/destinations/pays/italie" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
+                </div>
+            </div>
+
+            <!-- Türkiye -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c5.jpg" alt="Türkiye" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">TURQUIE</h3>
+                    <p class="text-white text-lg text-center">Études en Turquie</p>
+                    <a routerLink="/destinations/pays/turkiye" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
+                </div>
+            </div>
+
+            <!-- Espagne -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c6.jpg" alt="Espagne" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">ESPAGNE</h3>
+                    <p class="text-white text-lg text-center">Études en Espagne</p>
+                    <a routerLink="/destinations/pays/espagne" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
+                </div>
+            </div>
+
+            <!-- Belgique -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c7.jpg" alt="Belgique" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">BELGIQUE</h3>
+                    <p class="text-white text-lg text-center">Études en Belgique</p>
+                    <a routerLink="/destinations/pays/belgique" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
+                </div>
+            </div>
+
+            <!-- Allemagne -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c8.jpg" alt="Allemagne" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">ALLEMAGNE</h3>
+                    <p class="text-white text-lg text-center">Études en Allemagne</p>
+                    <a routerLink="/destinations/pays/allemagne" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
+                </div>
+            </div>
+
+            <!-- Chine -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c9.jpg" alt="Chine" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">CHINE</h3>
+                    <p class="text-white text-lg text-center">Études en Chine</p>
+                    <a routerLink="/destinations/pays/chine" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
+                </div>
+            </div>
+
+            <!-- Suisse -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c10.jpg" alt="Suisse" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">SUISSE</h3>
+                    <p class="text-white text-lg text-center">Études en Suisse</p>
+                    <a routerLink="/destinations/pays/suisse" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
+                </div>
+            </div>
+
+            <!-- Géorgie -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c11.jpg" alt="Géorgie" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">GÉORGIE</h3>
+                    <p class="text-white text-lg text-center">Études en Géorgie</p>
+                    <a routerLink="/destinations/pays/georgie" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
+                </div>
+            </div>
+
+            <!-- Malte -->
+            <div class="group relative bg-white shadow-lg hover:shadow-2xl mx-auto rounded-full w-72 h-72 overflow-hidden transition-all hover:-translate-y-2 duration-300">
+                <img src="/pics/c12.jpg" alt="Malte" class="rounded-full w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col justify-end items-center bg-gradient-to-t from-black/50 to-transparent p-6 rounded-full">
+                    <h3 class="mb-2 font-bold text-white text-2xl text-center">MALTE</h3>
+                    <p class="text-white text-lg text-center">Études à Malte</p>
+                    <a routerLink="/destinations/pays/malte" class="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-700 mt-3 px-6 py-3 rounded-full font-bold text-white text-lg transition-all">
+                        DÉCOUVRIR
+                    </a>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
 </main>

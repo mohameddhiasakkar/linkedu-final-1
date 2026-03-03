@@ -1,48 +1,69 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Student, Document, Message } from './student.model';
 
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './student.component.html',
+  styleUrls: ['./student.component.css']
 })
-export class StudentComponent {
-  student = {
-    name: 'Mohamed Dhia Sakkar',
-    headline: ' Machine Learning student',
-    profilePicture: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face',
-    pays: 'france | italie | spain',
-    age: 22,
-    email: 'your.email@example.com',
-    phoneNumber: '+1234567890',
-    chosenCountry: 'Canada',
-    countryFlagUrl: 'https://flagcdn.com/ca.svg',
-    cvUrl: '#',
-    socialLinks: [
-      { name: 'GitHub', url: '#' },
-      { name: 'LinkedIn', url: '#' }
-    ],
-    openToWork: ['Software Engineer', 'Full-Stack Developer', 'Machine Learning'],
-    skills: ['Angular', 'TypeScript', 'Python', 'Java', 'Machine Learning'],
-    education: [
-      { degree: 'Baccalauréat Mathématiques', institution: 'Lycée Pilote', year: '2020' },
-      { degree: 'Génie Logiciel', institution: 'ESPRIT', year: '2024' }
-    ],
-    documents: [
-      { name: 'Diplome_Bac.pdf', type: 'pdf', size: '1.2MB', url: '#' },
-      { name: 'Releve_notes.pdf', type: 'pdf', size: '800KB', url: '#' },
-      { name: 'Passport_Scan.jpg', type: 'image', size: '2.5MB', url: '#' }
-    ]
+export class StudentProfileComponent implements OnInit {
+
+  student: Student = {
+    name: 'Dhia Eddine Bouhouch',
+    headline: 'Computer Science Student | Full Stack Developer',
+    profilePicture: 'assets/images/default-avatar.png',
+    countryFlagUrl: 'assets/pics/c1.jpg',
+    chosenCountry: 'France',
+    timezone: 'GMT+1',
+    email: 'dhia.bouhouch@example.com',
+    phoneNumber: '+216 12 345 678',
+    location: 'Tunis, Tunisia',
+    pays: 'France | Canada | Germany | Switzerland',
+    skills: ['Angular', 'React', 'Node.js', 'Python'],
+    education: [],
+    experience: [],
+    documents: [],
+    socialLinks: [],
+    cvUrl: '/documents/Dhia_Bouhouch_CV.pdf',
+    connections: 156,
+    availability: 'Available for opportunities',
+    completionRate: '92%'
   };
 
-  newMessage = '';
+  newMessage: string = '';
+  messages: Message[] = [];
 
-  sendMessage() {
+  ngOnInit(): void {
+    console.log('Student Profile Loaded ✅');
+  }
+
+  sendMessage(): void {
     if (this.newMessage.trim()) {
-      alert(`Message envoyé : "${this.newMessage}"`);
+      this.messages.push({
+        id: this.messages.length + 1,
+        sender: 'Dhia Eddine',
+        senderInitials: 'D',
+        content: this.newMessage,
+        timestamp: new Date(),
+        isOwn: true
+      });
       this.newMessage = '';
     }
   }
+
+  downloadDocument(doc: Document): void {
+    window.open(doc.url, '_blank');
+  }
+
 }
+@Component({
+  selector: 'app-student',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './student.component.html',
+  styleUrl: './student.component.css'
+})
+export class StudentComponent {}
