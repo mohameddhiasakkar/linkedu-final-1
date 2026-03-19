@@ -1,8 +1,18 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from '../home/home.component';
-import { DestinationsComponent } from '../destinations/destinations.component';
+import { authGuard } from '../core/guards/auth-guard';
+import { roleGuard } from '../core/guards/role-guard';
 
-// 🌍 Components لكل دولة
+// Public pages
+import { HomeComponent } from '../home/home.component';
+import { ServicesComponent } from '../services/services.component';
+import { BlogsComponent } from '../blogs/blogs.component';
+import { AboutUsComponent } from '../about-us/about-us.component';
+import { LoginComponent } from '../login/login.component';
+import { GuestSignupComponent } from '../signup/guest-signup/guest-signup.component';
+import { ContractSignupComponent } from '../signup/contract-signup/contract-signup.component';
+
+// Destinations
+import { DestinationsComponent } from '../destinations/destinations.component';
 import { AllemagneComponent } from '../destinations/pays/allemagne.component';
 import { BelgiqueComponent } from '../destinations/pays/belgique.component';
 import { ChineComponent } from '../destinations/pays/chine.component';
@@ -16,21 +26,24 @@ import { RomanieComponent } from '../destinations/pays/romanie.component';
 import { SuisseComponent } from '../destinations/pays/suisse.component';
 import { TurkiyeComponent } from '../destinations/pays/turkiye.component';
 
-// باقي الصفحات
-import { ServicesComponent } from '../services/services.component';
-import { BlogsComponent } from '../blogs/blogs.component';
-import { AboutUsComponent } from '../about-us/about-us.component';
+// Protected pages
 import { AdminComponent } from '../admin/admin.component';
-import { TicketComponent } from '../ticket/ticket.component';
 import { StudentProfileComponent } from '../student/student.component';
-import { SignupComponent } from '../signup/signup.component';
-import { LoginComponent } from '../login/login.component';
+import { TicketComponent } from '../ticket/ticket.component';
 
 export const routes: Routes = [
+  // ── Public ──────────────────────────────────────────
   { path: '', component: HomeComponent },
-  { path: 'destinations', component: DestinationsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', redirectTo: 'signup/guest', pathMatch: 'full' },
+  { path: 'signup/guest', component: GuestSignupComponent },
+  { path: 'signup/contract', component: ContractSignupComponent },
+  { path: 'services', component: ServicesComponent },
+  { path: 'blogs', component: BlogsComponent },
+  { path: 'about-us', component: AboutUsComponent },
 
-  // 🌍 Routes لكل دولة
+  // ── Destinations (public) ────────────────────────────
+  { path: 'destinations', component: DestinationsComponent },
   { path: 'destinations/pays/france', component: FranceComponent },
   { path: 'destinations/pays/romanie', component: RomanieComponent },
   { path: 'destinations/pays/dubai', component: DubaiComponent },
@@ -44,15 +57,27 @@ export const routes: Routes = [
   { path: 'destinations/pays/georgie', component: GeorgieComponent },
   { path: 'destinations/pays/malte', component: MalteComponent },
 
-  // باقي الصفحات
-  { path: 'services', component: ServicesComponent },
-  { path: 'blogs', component: BlogsComponent },
-  { path: 'about-us', component: AboutUsComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'ticket', component: TicketComponent },
-  { path: 'student', component: StudentProfileComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  // ── Admin only ───────────────────────────────────────
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['ADMIN', 'AGENT'] }
+  },
 
-  { path: '**', redirectTo: '' } // fallback
+  // ── Student/User ─────────────────────────────────────
+  {
+    path: 'student',
+    component: StudentProfileComponent,
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['STUDENT', 'USER'] }
+  },
+  {
+    path: 'ticket',
+    component: TicketComponent,
+    canActivate: [authGuard]
+  },
+
+  // ── Fallback ─────────────────────────────────────────
+  { path: '**', redirectTo: '' }
 ];

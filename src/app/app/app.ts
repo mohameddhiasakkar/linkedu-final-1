@@ -1,19 +1,18 @@
 import { Component, signal, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { NgIf } from '@angular/common'; // ضروري لو تستعمل *ngIf
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.html',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgIf] // هنا صحيح
+  imports: [RouterOutlet, RouterLink, RouterLinkActive]
 })
 export class App implements OnInit {
   isLoggedIn = signal<boolean>(false);
 
   ngOnInit() {
     if (typeof window !== 'undefined') { 
-      this.checkLogin(); // localStorage ما ينجمش في SSR
+      this.checkLogin();
     }
   }
 

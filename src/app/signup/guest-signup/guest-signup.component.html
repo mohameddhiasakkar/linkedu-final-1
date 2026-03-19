@@ -1,0 +1,77 @@
+<div class="signup-page">
+  <div class="signup-card">
+
+    <!-- Accent bar -->
+    <div class="card-accent-bar"></div>
+
+    <!-- Header -->
+    <div class="signup-header">
+      <h2>Join LinkedU</h2>
+      <p>Start your study abroad journey</p>
+    </div>
+
+    <!-- Tab Switcher -->
+    <div class="tab-switcher">
+      <a routerLink="/signup/guest" class="tab-btn active">🌍 Guest Registration</a>
+      <a routerLink="/signup/contract" class="tab-btn">📄 Contract Registration</a>
+    </div>
+
+    <p class="tab-description">
+      Register as a guest to explore our platform. You'll need to verify your email.
+    </p>
+
+    <!-- Form -->
+    <form class="signup-form" (ngSubmit)="onSubmit()">
+
+      <input class="form-input" name="username" [(ngModel)]="form.username"
+        placeholder="Username *" required />
+
+      <div class="form-row">
+        <input class="form-input" name="firstName" [(ngModel)]="form.firstName"
+          placeholder="First name *" required />
+        <input class="form-input" name="lastName" [(ngModel)]="form.lastName"
+          placeholder="Last name *" required />
+      </div>
+
+      <input class="form-input" name="email" type="email" [(ngModel)]="form.email"
+        placeholder="Email address *" required />
+
+      <div class="form-row">
+        <input class="form-input" name="phoneNumber" [(ngModel)]="form.phoneNumber"
+          placeholder="Phone number *" required />
+        <input class="form-input" name="birthDate" type="date" [(ngModel)]="form.birthDate"
+          required />
+      </div>
+
+      <input class="form-input" name="address" [(ngModel)]="form.address"
+        placeholder="Address (optional)" />
+
+      <input class="form-input" name="password" type="password" [(ngModel)]="form.password"
+        placeholder="Password *" required />
+
+      <p *ngIf="form.password.length > 0" class="password-strength">
+        Password strength:
+        <span [ngClass]="{
+          'strength-weak': passwordStrength === 'Weak',
+          'strength-medium': passwordStrength === 'Medium',
+          'strength-strong': passwordStrength === 'Strong'
+        }">{{ passwordStrength }}</span>
+      </p>
+
+      <div *ngIf="errorMessage" class="error-message">⚠️ {{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="success-message">✅ {{ successMessage }}</div>
+
+      <button type="submit" class="submit-btn" [disabled]="isSubmitting">
+        <span class="submit-btn-text">
+          {{ isSubmitting ? 'Creating account...' : 'Create Guest Account' }}
+        </span>
+      </button>
+
+    </form>
+
+    <div class="signup-footer">
+      Already have an account? <a routerLink="/login">Sign in</a>
+    </div>
+
+  </div>
+</div>
