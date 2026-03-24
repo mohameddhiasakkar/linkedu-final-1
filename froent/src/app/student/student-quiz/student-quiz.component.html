@@ -11,6 +11,8 @@
     </div>
   </header>
 
+  <p class="quiz-description" *ngIf="quizDetail?.description">{{ quizDetail?.description }}</p>
+
   <div class="status" *ngIf="isLoadingQuizzes">Loading quizzes…</div>
   <div class="status" *ngIf="isLoadingQuestions">Loading questions…</div>
   <div class="status error" *ngIf="errorMessage">{{ errorMessage }}</div>
@@ -49,5 +51,17 @@
       {{ isSubmitting ? 'Submitting...' : 'Submit Quiz' }}
     </button>
   </form>
+
+  <section class="attempts-section" *ngIf="attempts.length > 0 || isLoadingAttempts">
+    <h3>My quiz history</h3>
+    <p class="status" *ngIf="isLoadingAttempts">Loading attempts…</p>
+    <ul class="attempts-list" *ngIf="!isLoadingAttempts">
+      <li *ngFor="let a of attempts">
+        <span class="attempt-title">{{ attemptQuizTitle(a) }}</span>
+        <span class="attempt-score" *ngIf="a.score != null">Score: {{ a.score }}</span>
+        <span class="attempt-when" *ngIf="a.completedAt">{{ a.completedAt | date: 'short' }}</span>
+      </li>
+    </ul>
+  </section>
 </div>
 

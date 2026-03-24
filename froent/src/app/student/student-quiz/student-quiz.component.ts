@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
-import { QuizItem, QuizService } from '../../core/services/quiz.service';
-import {
-  StudentAnswerDTO,
-  StudentQuizService,
-  StudentQuizQuestion
-} from '../../core/services/student-quiz.service';
+import { QuizAttemptItem, QuizAttemptService } from '../../core/services/quiz-attempt.service';
+import { QuizDetail, QuizItem, QuizService } from '../../core/services/quiz.service';
+import { StudentQuizService, StudentQuizQuestion } from '../../core/services/student-quiz.service';
 
 @Component({
   selector: 'app-student-quiz',
@@ -19,11 +16,15 @@ import {
 export class StudentQuizComponent implements OnInit {
   quizzes: QuizItem[] = [];
   selectedQuizId: number | null = null;
+  quizDetail: QuizDetail | null = null;
   questions: StudentQuizQuestion[] = [];
   answersByQuestionId: Record<number, string> = {};
 
+  attempts: QuizAttemptItem[] = [];
+
   isLoadingQuizzes = false;
   isLoadingQuestions = false;
+  isLoadingAttempts = false;
   isSubmitting = false;
   message = '';
   errorMessage = '';
@@ -31,6 +32,7 @@ export class StudentQuizComponent implements OnInit {
   constructor(
     private readonly quizService: QuizService,
     private readonly studentQuizService: StudentQuizService,
+    private readonly quizAttemptService: QuizAttemptService,
     private readonly authService: AuthService
   ) {}
 
@@ -41,7 +43,11 @@ export class StudentQuizComponent implements OnInit {
         this.quizzes = items;
         this.selectedQuizId = items[0]?.id ?? null;
         this.isLoadingQuizzes = false;
-        if (this.selectedQuizId) this.loadQuestions();
+        if (this.selectedQuizId) {
+          this.loadQuizDetail();
+          this.loadQuestions();
+        }
+        this.loadAttempts();
       },
       error: () => {
         this.errorMessage = 'Failed to load quizzes.';
@@ -50,8 +56,39 @@ export class StudentQuizComponent implements OnInit {
     });
   }
 
+  loadQuizDetail(): void {
+    if (!this.selectedQuizId) {
+      this.quizDetail = null;
+      return;
+    }
+    this.quizService.getQuiz(this.selectedQuizId).subscribe({
+      next: (q) => (this.quizDetail = q),
+      error: () => (this.quizDetail = null)
+    });
+  }
+
+  loadAttempts(): void {
+    const rawStudentId = this.authService.getUserId();
+    const studentId = rawStudentId ? Number(rawStudentId) : NaN;
+    if (!Number.isFinite(studentId)) return;
+
+    this.isLoadingAttempts = true;
+    this.quizAttemptService.getStudentAttempts(studentId).subscribe({
+      next: (rows) => {
+        this.attempts = rows;
+        this.isLoadingAttempts = false;
+      },
+      error: () => {
+        this.attempts = [];
+        this.isLoadingAttempts = false;
+      }
+    });
+  }
+
   loadQuestions(): void {
     if (!this.selectedQuizId) return;
+
+    this.loadQuizDetail();
 
     this.isLoadingQuestions = true;
     this.message = '';
@@ -59,8 +96,8 @@ export class StudentQuizComponent implements OnInit {
     this.answersByQuestionId = {};
 
     this.studentQuizService.getQuizQuestions(this.selectedQuizId).subscribe({
-      next: (questions) => {
-        this.questions = questions;
+      next: (qs) => {
+        this.questions = qs;
         this.isLoadingQuestions = false;
       },
       error: () => {
@@ -68,6 +105,38 @@ export class StudentQuizComponent implements OnInit {
         this.isLoadingQuestions = false;
       }
     });
+  }
+
+  /**
+   * Score for POST /api/quiz-attempts: 0–100.
+   * Uses `correctOption` when the API returns it; otherwise full credit if all questions are answered.
+   */
+  private computeScorePercent(): number {
+    const total = this.questions.length;
+    if (!total) return 0;
+
+    let graded = 0;
+    let correct = 0;
+
+    for (const q of this.questions) {
+      const selected = this.answersByQuestionId[q.id]?.trim();
+      if (!selected) {
+        throw new Error('Please answer every question.');
+      }
+      const expected = q.correctOption?.trim().toUpperCase();
+      if (expected) {
+        graded++;
+        if (selected.toUpperCase() === expected) {
+          correct++;
+        }
+      }
+    }
+
+    if (graded === 0) {
+      return 100;
+    }
+
+    return (correct / graded) * 100;
   }
 
   submitQuiz(): void {
@@ -78,15 +147,11 @@ export class StudentQuizComponent implements OnInit {
       return;
     }
 
-    const answers: StudentAnswerDTO[] = this.questions
-      .filter((q) => !!this.answersByQuestionId[q.id])
-      .map((q) => ({
-        questionId: q.id,
-        selectedOption: this.answersByQuestionId[q.id]
-      }));
-
-    if (answers.length === 0) {
-      this.errorMessage = 'Please answer at least one question.';
+    let score: number;
+    try {
+      score = this.computeScorePercent();
+    } catch (e) {
+      this.errorMessage = e instanceof Error ? e.message : 'Invalid answers.';
       return;
     }
 
@@ -94,10 +159,11 @@ export class StudentQuizComponent implements OnInit {
     this.message = '';
     this.errorMessage = '';
 
-    this.studentQuizService.submitQuiz(studentId, this.selectedQuizId, answers).subscribe({
-      next: (res) => {
-        this.message = `${res.message} (Attempt #${res.quizAttemptId})`;
+    this.quizAttemptService.submitAttempt(studentId, this.selectedQuizId, score).subscribe({
+      next: (attempt) => {
+        this.message = `Submitted. Score: ${attempt.score ?? score}% (Attempt #${attempt.id})`;
         this.isSubmitting = false;
+        this.loadAttempts();
       },
       error: () => {
         this.errorMessage = 'Submit failed. Please try again.';
@@ -105,5 +171,8 @@ export class StudentQuizComponent implements OnInit {
       }
     });
   }
-}
 
+  attemptQuizTitle(a: QuizAttemptItem): string {
+    return a.quiz?.title ?? `Quiz #${a.quiz?.id ?? '?'}`;
+  }
+}

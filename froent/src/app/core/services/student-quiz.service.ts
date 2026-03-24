@@ -1,15 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-/**
- * Matches backend `StudentQuizController` body item `StudentAnswerDTO`.
- */
-export interface StudentAnswerDTO {
-  questionId: number;
-  /** One of "A", "B", "C", "D" (MCQ). */
-  selectedOption: string;
-}
 
 export interface StudentQuizQuestion {
   id: number;
@@ -18,12 +9,8 @@ export interface StudentQuizQuestion {
   optionB?: string;
   optionC?: string;
   optionD?: string;
-}
-
-/** Matches backend `ResponseEntity.ok(Map.of("quizAttemptId", ..., "message", ...))`. */
-export interface SubmitQuizResponse {
-  quizAttemptId: number;
-  message: string;
+  /** If present in API JSON, used to compute score for POST /api/quiz-attempts. */
+  correctOption?: string;
 }
 
 @Injectable({
@@ -41,23 +28,4 @@ export class StudentQuizService {
     );
   }
 
-  /**
-   * POST /api/student-quiz/submit
-   * Query: studentId, quizId — body: StudentAnswerDTO[]
-   */
-  submitQuiz(
-    studentId: number,
-    quizId: number,
-    answers: StudentAnswerDTO[]
-  ): Observable<SubmitQuizResponse> {
-    const params = new HttpParams()
-      .set('studentId', String(studentId))
-      .set('quizId', String(quizId));
-
-    return this.http.post<SubmitQuizResponse>(
-      `${this.apiBaseUrl}/api/student-quiz/submit`,
-      answers,
-      { params }
-    );
-  }
 }

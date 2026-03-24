@@ -1,6 +1,27 @@
 <div class="agent-quiz-page">
   <h2>Agent Quiz Assignment</h2>
-  <p class="subtitle">Assign an existing question to an existing quiz</p>
+  <p class="subtitle">Create quizzes and assign questions</p>
+
+  <section class="create-card">
+    <h3>New quiz</h3>
+    <div class="create-row">
+      <input
+        type="text"
+        [(ngModel)]="newQuizTitle"
+        name="newQuizTitle"
+        placeholder="Title"
+      />
+      <input
+        type="text"
+        [(ngModel)]="newQuizDescription"
+        name="newQuizDescription"
+        placeholder="Description"
+      />
+      <button type="button" (click)="createQuiz()" [disabled]="isCreatingQuiz">
+        {{ isCreatingQuiz ? 'Creating...' : 'Create' }}
+      </button>
+    </div>
+  </section>
 
   <div class="status" *ngIf="isLoading">Loading quizzes…</div>
   <div class="status error" *ngIf="errorMessage">{{ errorMessage }}</div>

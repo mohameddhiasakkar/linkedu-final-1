@@ -17,8 +17,12 @@ export class AgentQuizComponent implements OnInit {
   selectedQuizId: number | null = null;
   questionId: number | null = null;
 
+  newQuizTitle = '';
+  newQuizDescription = '';
+
   isLoading = false;
   isSubmitting = false;
+  isCreatingQuiz = false;
   message = '';
   errorMessage = '';
 
@@ -38,6 +42,41 @@ export class AgentQuizComponent implements OnInit {
       error: () => {
         this.errorMessage = 'Failed to load quizzes.';
         this.isLoading = false;
+      }
+    });
+  }
+
+  createQuiz(): void {
+    const rawId = this.authService.getUserId();
+    const createdById = rawId ? Number(rawId) : NaN;
+    const title = this.newQuizTitle.trim();
+    const description = this.newQuizDescription.trim();
+
+    if (!Number.isFinite(createdById)) {
+      this.errorMessage = 'User id not found in session.';
+      return;
+    }
+    if (!title) {
+      this.errorMessage = 'Quiz title is required.';
+      return;
+    }
+
+    this.isCreatingQuiz = true;
+    this.message = '';
+    this.errorMessage = '';
+
+    this.quizService.createQuiz(title, description || ' ', createdById).subscribe({
+      next: (quiz) => {
+        this.quizzes = [...this.quizzes, { id: quiz.id, title: quiz.title, description: quiz.description }];
+        this.selectedQuizId = quiz.id;
+        this.newQuizTitle = '';
+        this.newQuizDescription = '';
+        this.message = `Created quiz #${quiz.id}: ${quiz.title}`;
+        this.isCreatingQuiz = false;
+      },
+      error: () => {
+        this.errorMessage = 'Failed to create quiz.';
+        this.isCreatingQuiz = false;
       }
     });
   }

@@ -15,6 +15,44 @@ h2 {
   margin: 0.4rem 0 1.2rem;
 }
 
+.create-card {
+  background: #f9fafb;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.9rem;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.create-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.create-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.create-row input {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  min-width: 12rem;
+  flex: 1;
+}
+
+.create-row button {
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: #059669;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .form-card {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.08);
