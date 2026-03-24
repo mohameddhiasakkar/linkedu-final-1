@@ -1,0 +1,150 @@
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 28rem;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.chat-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.chat-peer-picker,
+.chat-peer-manual {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.peer-label {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+.peer-select {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  background: #ffffff;
+}
+
+.peer-input {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  background: #ffffff;
+  width: 10rem;
+}
+
+.peer-go-btn,
+.send-btn {
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.peer-go-btn:disabled,
+.send-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.chat-body {
+  padding: 1rem;
+  overflow-y: auto;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.chat-empty {
+  color: #6b7280;
+  font-weight: 600;
+  padding: 1rem 0;
+}
+
+.loading {
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.message-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.message-row.own {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 75%;
+  padding: 0.65rem 0.85rem;
+  border-radius: 1rem;
+}
+
+.message-row:not(.own) .bubble {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.message-row.own .bubble {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.message-content {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-weight: 600;
+}
+
+.message-time {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.75;
+  margin-top: 0.25rem;
+}
+
+.message-row.own .message-time {
+  opacity: 0.9;
+}
+
+.chat-footer {
+  padding: 0.9rem 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 0.75rem;
+}
+
+.message-input {
+  flex: 1;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.7rem 0.85rem;
+  background: #ffffff;
+}
+

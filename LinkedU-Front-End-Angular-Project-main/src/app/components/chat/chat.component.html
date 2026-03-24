@@ -1,0 +1,69 @@
+<div class="chat-wrapper">
+  <div class="chat-header">
+    <h3 class="chat-title">Messages</h3>
+
+    <div class="chat-peer-picker" *ngIf="peerUserId == null">
+      <label class="peer-label" for="peerSelect">Chat with</label>
+      <select
+        id="peerSelect"
+        class="peer-select"
+        [disabled]="peerOptions.length === 0"
+        (change)="selectPeer(+$any($event.target).value)">
+      >
+        <option *ngIf="peerOptions.length === 0" [ngValue]="null">No contacts yet</option>
+        <option *ngFor="let p of peerOptions" [ngValue]="p.id">
+          {{ p.label }}
+        </option>
+      </select>
+    </div>
+
+    <div class="chat-peer-manual" *ngIf="peerUserId == null && peerOptions.length === 0">
+      <input
+        class="peer-input"
+        type="number"
+        placeholder="Peer user id"
+        [(ngModel)]="manualPeerId"
+      />
+      <button class="peer-go-btn" type="button" (click)="manualSelectPeer()">
+        Start
+      </button>
+    </div>
+  </div>
+
+  <div class="chat-body">
+    <div class="chat-empty" *ngIf="selectedPeerId == null">
+      Pick a peer to start chatting.
+    </div>
+
+    <div class="chat-messages" *ngIf="selectedPeerId != null">
+      <div class="loading" *ngIf="isLoading">Loading conversation…</div>
+
+      <div
+        class="message-row"
+        *ngFor="let m of messages"
+        [class.own]="m.sender.id === currentUserId"
+      >
+        <div class="bubble">
+          <div class="message-content">{{ m.message }}</div>
+          <span class="message-time">{{ m.timestamp | date: 'short' }}</span>
+        </div>
+      </div>
+
+      <div #endOfMessages></div>
+    </div>
+  </div>
+
+  <div class="chat-footer" *ngIf="selectedPeerId != null">
+    <input
+      class="message-input"
+      type="text"
+      placeholder="Type a message…"
+      [(ngModel)]="draftMessage"
+      (keyup.enter)="send()"
+    />
+    <button class="send-btn" type="button" (click)="send()" [disabled]="!draftMessage.trim()">
+      Send
+    </button>
+  </div>
+</div>
+

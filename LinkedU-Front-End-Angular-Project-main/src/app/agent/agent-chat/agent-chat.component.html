@@ -1,0 +1,28 @@
+<div class="agent-chat-page">
+  <header class="page-header">
+    <div>
+      <h2>Agent Chat</h2>
+      <p class="subtitle">Message your assigned students</p>
+    </div>
+
+    <div class="student-picker" *ngIf="myStudents.length > 0">
+      <label for="studentSelect">Student</label>
+      <select
+        id="studentSelect"
+        [(ngModel)]="selectedPeerUserId"
+      >
+        <option *ngFor="let s of myStudents" [ngValue]="s.user?.id ?? null">
+          {{ studentLabel(s) }}
+        </option>
+      </select>
+    </div>
+  </header>
+
+  <div class="status" *ngIf="isLoading">Loading…</div>
+  <div class="status error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <section class="chat-section" *ngIf="!isLoading">
+    <app-chat [peerUserId]="selectedPeerUserId"></app-chat>
+  </section>
+</div>
+

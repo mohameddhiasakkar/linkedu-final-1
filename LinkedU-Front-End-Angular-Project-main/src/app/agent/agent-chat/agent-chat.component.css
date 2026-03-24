@@ -1,0 +1,63 @@
+.agent-chat-page {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.subtitle {
+  margin: 0.25rem 0 0;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.student-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.student-picker label {
+  font-weight: 700;
+  color: #374151;
+}
+
+.student-picker select {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  background: #ffffff;
+  min-width: 22rem;
+}
+
+.status {
+  font-weight: 700;
+  color: #6b7280;
+  margin: 1rem 0;
+}
+
+.status.error {
+  color: #b91c1c;
+}
+
+.chat-section {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.5rem;
+}
+
