@@ -66,7 +66,20 @@ export const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [authGuard, roleGuard],
-    data: { roles: ['ADMIN', 'AGENT'] }
+    data: { roles: ['ADMIN', 'AGENT'] },
+    children: [
+      { path: '', redirectTo: 'product-keys', pathMatch: 'full' },
+      {
+        path: 'product-keys',
+        loadComponent: () =>
+          import('../admin/product-keys.component/product-keys.component').then(m => m.ProductKeysComponent)
+      },
+      {
+        path: 'users',
+        loadComponent: () =>
+          import('../admin/users.component/users.component').then(m => m.UsersComponent)
+      }
+    ]
   },
 
   // ── Student/User ─────────────────────────────────────

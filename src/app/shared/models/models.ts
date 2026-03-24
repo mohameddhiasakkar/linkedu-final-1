@@ -54,6 +54,9 @@ export interface User {
   role: UserRole;
   enabled: boolean;
 }
+export interface AssignRolePayload {
+  role: UserRole;
+}
 
 // ===========================
 // STUDENT PROFILE MODELS
@@ -111,16 +114,21 @@ export interface ProductKey {
   id: number;
   keyValue: string;
   used: boolean;
+  createdAt?: string;
 }
+
+
 
 // ===========================
 // DESTINATIONS
 // ===========================
 export interface Destination {
-  id: number;
+  id?: number;
   name: string;
   description: string;
-  imageUrl: string;
+  countryCode?: string;
+  imageUrl?: string;
+  isActive?: boolean;
 }
 
 // ===========================
