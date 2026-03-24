@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Student, Document, Message } from './student.model';
 import { ChatComponent } from '../components/chat/chat.component';
 
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [CommonModule, ChatComponent],
+  imports: [CommonModule, ChatComponent, RouterLink],
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
@@ -63,7 +64,7 @@ export class StudentProfileComponent implements OnInit {
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [CommonModule, ChatComponent],
+  imports: [CommonModule, ChatComponent, RouterLink],
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })

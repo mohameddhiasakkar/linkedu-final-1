@@ -1,0 +1,29 @@
+<div class="agent-quiz-page">
+  <h2>Agent Quiz Assignment</h2>
+  <p class="subtitle">Assign an existing question to an existing quiz</p>
+
+  <div class="status" *ngIf="isLoading">Loading quizzes…</div>
+  <div class="status error" *ngIf="errorMessage">{{ errorMessage }}</div>
+  <div class="status success" *ngIf="message">{{ message }}</div>
+
+  <form class="form-card" (ngSubmit)="assign()">
+    <div class="field">
+      <label for="quizId">Quiz</label>
+      <select id="quizId" [(ngModel)]="selectedQuizId" name="quizId" required>
+        <option *ngFor="let q of quizzes" [ngValue]="q.id">
+          #{{ q.id }} - {{ q.title }}
+        </option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="questionId">Question ID</label>
+      <input id="questionId" type="number" [(ngModel)]="questionId" name="questionId" required placeholder="ex: 12" />
+    </div>
+
+    <button type="submit" [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Assigning...' : 'Assign Question' }}
+    </button>
+  </form>
+</div>
+

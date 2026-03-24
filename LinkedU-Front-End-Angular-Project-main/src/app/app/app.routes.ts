@@ -32,6 +32,8 @@ import { TurkiyeComponent } from '../destinations/pays/turkiye.component';
 import { AdminComponent } from '../admin/admin.component';
 import { StudentProfileComponent } from '../student/student.component';
 import { AgentChatComponent } from '../agent/agent-chat/agent-chat.component';
+import { AgentQuizComponent } from '../agent/agent-quiz/agent-quiz.component';
+import { StudentQuizComponent } from '../student/student-quiz/student-quiz.component';
 import { TicketComponent } from '../ticket/ticket.component';
 
 export const routes: Routes = [
@@ -77,11 +79,23 @@ export const routes: Routes = [
     canActivate: [authGuard, roleGuard],
     data: { roles: ['AGENT'] }
   },
+  {
+    path: 'agent-quiz',
+    component: AgentQuizComponent,
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['AGENT'] }
+  },
 
   // ── Student/User ─────────────────────────────────────
   {
     path: 'student',
     component: StudentProfileComponent,
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['STUDENT', 'USER'] }
+  },
+  {
+    path: 'student-quiz',
+    component: StudentQuizComponent,
     canActivate: [authGuard, roleGuard],
     data: { roles: ['STUDENT', 'USER'] }
   },
