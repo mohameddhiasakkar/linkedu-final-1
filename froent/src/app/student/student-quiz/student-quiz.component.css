@@ -1,0 +1,89 @@
+.student-quiz-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+h2 {
+  margin: 0;
+  color: #111827;
+}
+
+.quiz-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+label {
+  font-weight: 700;
+}
+
+select {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.7rem;
+}
+
+.quiz-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.question-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.9rem;
+  padding: 1rem;
+}
+
+.question-card h3 {
+  margin-top: 0;
+  color: #1f2937;
+}
+
+.answer-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.45rem 0;
+  font-weight: 500;
+}
+
+.submit-btn {
+  justify-self: start;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1rem;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.status {
+  margin: 0.5rem 0;
+  font-weight: 700;
+}
+
+.status.error {
+  color: #b91c1c;
+}
+
+.status.success {
+  color: #065f46;
+}
+
+.status.hint {
+  color: #6b7280;
+  font-weight: 600;
+}
+
